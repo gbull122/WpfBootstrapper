@@ -1,0 +1,17 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package 
+	  Name="SimpleAppMsi" 
+	  Manufacturer="A Manufacturer" 
+	  Version="1.0.0.0" 
+	  UpgradeCode="3e35c8c9-346a-4c49-bcb8-410fb8f6b2c8">
+	  
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+	<MediaTemplate
+		EmbedCab="yes" />
+	  
+    <Feature Id="Main">
+      <ComponentGroupRef Id="AppComponents" />
+    </Feature>
+  </Package>
+</Wix>

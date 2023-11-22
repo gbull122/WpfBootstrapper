@@ -1,0 +1,32 @@
+﻿<Wix 
+	xmlns="http://wixtoolset.org/schemas/v4/wxs" 
+	xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+	
+  <Bundle 
+	  Name="SimpleAppBundle" 
+	  Manufacturer="A Manufacturer" 
+	  Version="1.0.0.0" 
+	  UpgradeCode="{C04EC4ED-005F-4680-9BE5-1695B4534DA7}">
+
+	  <BootstrapperApplication>
+		  <Payload SourceFile= "WixToolset.Mba.Host.config" />
+		  <Payload SourceFile= "WixToolset.Mba.Core.dll" />
+		  <Payload SourceFile= "DotNetCoreBootstrapper.dll" bal:BAFactoryAssembly="yes"/>
+		  <Payload SourceFile= "$(var.SolutionDir)src\DotNetCoreBootstrapper\bin\$(var.Configuration)\net7.0-windows\runtimes\win-x64\native\mbanative.dll" />
+		  <Payload SourceFile= "DotNetCoreBootstrapper.deps.json" />
+		  <Payload SourceFile ="DotNetCoreBootstrapper.runtimeconfig.json"/>
+		  <bal:WixDotNetCoreBootstrapperApplicationHost/>
+	  </BootstrapperApplication>
+
+    <Chain>
+
+		<MsiPackage
+			  Name="SimpleAppMsi"
+			  SourceFile="SimpleAppMsi.msi"
+			  Vital="yes"
+			  bal:PrereqPackage="yes"/>
+		
+    </Chain>
+
+  </Bundle>
+</Wix>

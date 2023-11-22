@@ -1,0 +1,95 @@
+﻿<Window 
+    x:Class="DotNetCoreBootstrapper.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    WindowStartupLocation="CenterScreen"
+    Width="800" 
+    Height="600" 
+    ResizeMode="NoResize" 
+    WindowStyle="None" 
+    Background="Transparent" 
+    AllowsTransparency="True">
+
+    <Border 
+        CornerRadius="10" 
+        Background="Transparent">
+        <Border 
+            Margin="10" 
+            Background="#FAFAFA" 
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect 
+                    Direction="270" 
+                    ShadowDepth="4" 
+                    BlurRadius="10" 
+                    Opacity="0.5"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Content="Installer"
+                    FontSize="24"/>
+                
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2">
+                    <TextBlock 
+                        FontSize="20" 
+                        HorizontalAlignment="Center"  
+                        Text="{Binding CurrentAction, Mode=OneWay}" />
+
+                <TextBlock 
+                            HorizontalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="Gray" 
+                            Text="{Binding CurrentPackage, Mode=OneWay}"  />
+
+                <ProgressBar 
+                            Value="{Binding Path=LocalProgress}"/>
+
+                <TextBlock 
+                            HorizontalAlignment="Center" 
+                            FontSize="15" 
+                            Foreground="Gray" 
+                            Text="{Binding Progress, Mode=OneWay}"/>
+
+                <ProgressBar 
+                            Value="{Binding Path=GlobalProgress}"/>
+                </StackPanel>
+                
+                <StackPanel 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" >
+                    <Button 
+                            Content="INSTALL" 
+                            Command="{Binding Path=InstallCommand}"
+                            Margin="10" 
+                            Height="30" 
+                            Width="100"/>
+                    <Button 
+                            Content="UNINSTALL" 
+                            Command="{Binding Path=UninstallCommand}" 
+                            Margin="10" 
+                            Height="30" 
+                            Width="100"/>
+                    <Button 
+                            Content="CANCEL" 
+                            Command="{Binding Path=CancelCommand}" 
+                            Margin="10" 
+                            Height="30" 
+                            Width="100" />
+                </StackPanel>
+                        
+            </Grid>
+        </Border>
+    </Border>
+
+</Window>
