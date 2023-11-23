@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{listings} 
+\usepackage{color}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+\author{George Bull}
+\title{WIX Toolset}
+\begin{document}
+\lstset{language=[Sharp]C,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+keywordstyle=\color{bluekeywords}\bfseries,
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily
+}
+\maketitle
+\chapter{Introduction}
+WIX toolset \url{https://wixtoolset.org/} is a set of tools to build installers for Windows. It's open source and has been around for some years, and recently updated to version 4. This document deals with version 4 only.
+
+\section{Documentation}
+The online documentation for WIX is notoriously poor and with it's long history can be painful to find details relevant for version 4. Although WIX is an open source project it is run and maintained by FireGiant, \url{https://www.firegiant.com} that also offer services to help with WIX related projects. One of the main figures in WIX is Rob Mensching who has set up a YouTube channel, Deployment Dojo, \url{https://www.youtube.com/playlist?list=PLDlzbQXIs18slmqmdlS10_de_Cps-QRg6} describing WIX.
+
+As WIX is used to build Windows installer a lot of the language refers to the details on the Windows installer so can be confusing.
+
+\chapter{Basics}\texttt{•}
+WIX projects are all integrated into Visual Studio with use of HeatWave \url{}. They consist of \texttt{.wxs} files, which are just XML. WIX converts these files into a database that the Windows installer can understand. It is important to realise that WIX is declarative so the order of WIX code is in most cases unimportant. This also means that when trying to do things in a procedural way WIX can get complicated as consideration needs to be given to all options, and this includes, installing, uninstalling, updating and the other many installer processes. 
+
+\chapter{MSI Package}
+
+\chapter{Bundle}
+
+\chapter{Bootstrapper}
+
+\begin{lstlisting}
+[assembly: WixToolset.Mba.Core.BootstrapperApplicationFactory (typeof(DotNetCoreBootstrapper.BootstrapperFactory))]
+namespace DotNetCoreBootstrapper;
+
+using WixToolset.Mba.Core;
+
+public class BootstrapperFactory : BaseBootstrapperApplicationFactory
+{
+    private static int loadCount = 0;
+
+    protected override IBootstrapperApplication Create(IEngine engine, IBootstrapperCommand bootstrapperCommand)
+    {
+        if (loadCount > 0)
+        {
+            engine.Log(LogLevel.Standard, $"Reloaded {loadCount} time(s)");
+        }
+        ++loadCount;
+        return new Bootstrapper(engine, bootstrapperCommand);
+    }
+}
+
+\end{lstlisting}
+
+\end{document}

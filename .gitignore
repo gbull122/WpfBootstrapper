@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.gz
+*.aux
+documents/Report/WixToolset.pdf
+*.out
