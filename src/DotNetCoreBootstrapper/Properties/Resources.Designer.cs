@@ -59,25 +59,5 @@ namespace DotNetCoreBootstrapper.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] close {
-            get {
-                object obj = ResourceManager.GetObject("close", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] software_box {
-            get {
-                object obj = ResourceManager.GetObject("software_box", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

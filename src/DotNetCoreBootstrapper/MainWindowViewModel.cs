@@ -3,8 +3,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Windows.Threading;
 using WixToolset.Mba.Core;
 
@@ -75,7 +73,7 @@ public class MainWindowViewModel : ObservableRecipient
     private void OnDetectPackageComplete(object sender, DetectPackageCompleteEventArgs e)
     {
         bootstrapper.Engine.Log(LogLevel.Standard, "MainViewModel Detect package Complete: " + e.PackageId);
-        if (e.PackageId == "SimpleMsiSetup")
+        if (e.PackageId == "SimpleAppMsi")
         {
             if (e.State == PackageState.Absent)
                 InstallEnabled = true;

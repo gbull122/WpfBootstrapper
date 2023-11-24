@@ -10,13 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\close.png" />
-    <None Remove="Resources\software_box.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\close.png" />
-    <Resource Include="Resources\software_box.png" />
+    <Compile Remove="Resources\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Resources\**" />
+    <Page Remove="Resources\**" />
   </ItemGroup>
 
   <ItemGroup>

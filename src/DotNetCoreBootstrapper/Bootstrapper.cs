@@ -17,6 +17,8 @@ public class Bootstrapper : BootstrapperApplication
         this.BootstrapperCommand = bootstrapperCommand;
 
         this.BADispatcher = Dispatcher.CurrentDispatcher;
+
+        this.engine.Log(LogLevel.Verbose, "Bootstrapper Constructed");
     }
 
     protected override void Run()
@@ -41,7 +43,7 @@ public class Bootstrapper : BootstrapperApplication
     {
         base.OnStartup(args);
 
-        this.engine.Log(LogLevel.Standard, "CustomBootstrapper");
+        this.engine.Log(LogLevel.Standard, "Bootstrapper OnStartup");
     }
 
     protected override void OnShutdown(ShutdownEventArgs args)
